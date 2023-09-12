@@ -1,0 +1,53 @@
+<div class="main-area">
+  <div class="content-area">
+    <div class="header">
+      <h1>Administrar Juntas</h1>
+      <hr>
+    </div>
+    <div class="container">
+      <!--Add product form-->
+      <div class="form-area">
+        <h3>Crear Junta</h3>
+        <form #juntasForm="ngForm" (ngSubmit)="onJuntaCreate(juntasForm.value)">
+          <label>Tipo Extremo</label>
+          <input type="text" name="tipo_extremos" ngModel>
+
+          <label>Tipo Material</label>
+          <input type="text" name="tipo_material" ngModel>
+
+          <label>Material Precio</label>
+          <input type="text" name="material" ngModel>
+
+          <input type="submit" value="Agregar junta">
+        </form>
+      </div>
+
+      <!--Display product area-->
+      <div class="product-display-area">
+        <h3>All Products</h3>
+        <table id="products">
+          <tr>
+            <th>#</th>
+            <th>Tipo Extremo</th>
+            <th>Tipo Material</th>
+            <th>Material Precio</th>
+            <th></th>
+          </tr>
+          <tr *ngFor= "let junta of allJuntas; index as i">
+            <td>{{i + 1}}</td>
+            <td>{{ junta.tipo_extremos}}</td>
+            <td>{{ junta.tipo_material}}</td>
+            <td>{{ junta.material}}</td>
+            <td><button class="btn-delete" (click)="onDeleteJunta(junta.id)">Delete</button></td>
+          </tr>
+        </table>
+        <input type="text" value="Actualizar listado Juntas" (click)="onJuntas()">
+        <hr>
+        <div class="action-btn-container">
+          <button class="btn-fetch">Fetch Product</button>
+          <button class="btn-clear">Clear Product</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
