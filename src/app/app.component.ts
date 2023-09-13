@@ -3,6 +3,7 @@ import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http'
 import {  map } from 'rxjs';
 import { Junta } from './model/products';
 import { v4 as uuidv4 } from 'uuid';
+import { JuntasService } from './juntas.service';
 
 
 @Component({
@@ -12,13 +13,25 @@ import { v4 as uuidv4 } from 'uuid';
 })
 export class AppComponent implements OnInit{
   title = 'AngularHttpRequest';
-  private apiurl="http://localhost:3500/api/juntas";
+  private apiurl="http://localhost:3500/api/juntas/";
   allJuntas: Junta[];
+  datosTabla: Junta[] ;
+  httpClient: HttpClient;
 
+  constructor(private juntasService: JuntasService, httpClient: HttpClient) {}
 
-  constructor( private httpClient: HttpClient){
-
+  private fethcjuntas(){
+    this.juntasService.obtenerDatosTabla().subscribe((datos) => {
+      this.datosTabla = datos;
+      console.log(this.datosTabla);
+      this.allJuntas = datos
+    });
   }
+
+
+
+
+
 
   ngOnInit(): void {
       this.fethcjuntas();
@@ -40,6 +53,8 @@ export class AppComponent implements OnInit{
     );
   }
 
+
+  /*
   private fethcjuntas(){
     this.httpClient.get<{[key:string]: Junta} >(this.apiurl).pipe(
       map(
@@ -55,11 +70,7 @@ export class AppComponent implements OnInit{
               juntas.push(junta);
               console.log(junta.id, junta.material)
             }
-            /*
-            {
-              juntas.push({...response[key], id:key});
-            }
-            */
+
 
           }//endfor
           return juntas
@@ -73,12 +84,18 @@ export class AppComponent implements OnInit{
     )
   }
 
+  */
+
   onDeleteJunta(id: string){
-    //console.log(+id+1);
+    console.log(id.toString());
     //const idt = +id + 1
     //console.log('idt:'+idt);
-    this.httpClient.delete(`${this.apiurl}/${id}.json`).subscribe()
+    this.httpClient.delete(`${this.apiurl}/${id.toString()}`).subscribe()
   }
+
+
+
+
 
   }
 
