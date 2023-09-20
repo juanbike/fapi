@@ -38,16 +38,24 @@
             <td>{{ junta.tipo_extremos}}</td>
             <td>{{ junta.tipo_material}}</td>
             <td>{{ junta.material}}</td>
-            <td><button class="btn-delete" (click)="onDeleteJunta(junta.id)">Delete</button></td>
+
+         <td><button class="btn-delete" (click)="onDeleteJunta(junta.id)">Delete</button></td>
+
           </tr>
         </table>
-        <!--<input type="text" value="Actualizar listado Juntas" (click)="onJuntas()">-->
+        <button type="text" class="btn btn-blue" (click)="onJuntas()">Actualizar</button>
+        <div *ngIf="showMessage" class="message">
+          {{ messageText }}
+        </div>
         <hr>
         <div class="action-btn-container">
           <button class="btn-fetch">Fetch Product</button>
           <button class="btn-clear">Clear Product</button>
         </div>
+
       </div>
+
     </div>
+
   </div>
 </div>
