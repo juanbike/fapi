@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient, HttpClientModule, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import {  map } from 'rxjs';
 import { Junta } from './model/products';
-import { v4 as uuidv4 } from 'uuid';
+
+import { NgForm } from '@angular/forms';
 //import { JuntasService } from './juntas.service';
 
 
@@ -22,6 +23,11 @@ export class AppComponent implements OnInit{
 
   showMessage: boolean = false;
   messageText: string = '';
+
+  //Accedemos a las propiedades del formulario
+  @ViewChild( 'juntasForm' ) form: NgForm;
+  //cambiamos la propiedad del boton de submit
+  editMode: boolean = false;
 
   constructor(private http: HttpClient){}
 
@@ -139,6 +145,46 @@ export class AppComponent implements OnInit{
     );
   }
 
+
+
+  onDeleteAllJuntas():void{
+    this.http.delete<void>(`${this.apiurl}`).subscribe(
+      () =>{
+        // Operación exitosa
+        this.showMessageWithTimeout('Juntas eliminadas con exito', 3000);
+      },
+      (error: HttpErrorResponse) =>{
+        console.log('Error al eliminar las juntas', error);
+        // Muestro mensaje de error
+        this.showMessageWithTimeout('Error al eliminar las juntas', 3000);
+      }
+    )
+  }
+
+
+  onEditClicked(id: string){
+    //console.log(id);
+    let junta = this.allJuntas.find(
+      (p) => {
+        return p.id === id
+      }
+    )
+    console.log(junta);
+
+    //Llenamos el formulario con los datos de la junta seleccionada
+    this.form.setValue({
+      tipo_extremos: junta.tipo_extremos,
+      tipo_material: junta.tipo_material,
+      material: junta.material
+    })
+
+    //Cambiamos el modo de edicion
+    this.editMode = true;
+  }
+
+
+  //utilities
+
   showMessageWithTimeout(message: string, timeout: number): void {
     this.showMessage = true;
     this.messageText = message;
@@ -151,7 +197,7 @@ export class AppComponent implements OnInit{
 
 
 
-  
+
 
   /*
 

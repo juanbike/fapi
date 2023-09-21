@@ -18,7 +18,7 @@
           <label>Material Precio</label>
           <input type="text" name="material" ngModel>
 
-          <input type="submit" value="Agregar junta">
+          <input type="submit" value="{{editMode ? 'Actualizar Junta' : 'Crear Junta'}}">
         </form>
       </div>
 
@@ -40,17 +40,17 @@
             <td>{{ junta.material}}</td>
 
          <td><button class="btn-delete" (click)="onDeleteJunta(junta.id)">Delete</button></td>
-
+         <td><button class="btn-edit" (click)="onEditClicked(junta.id)">Edit</button></td>
           </tr>
         </table>
-        <button type="text" class="btn btn-blue" (click)="onJuntas()">Actualizar</button>
+        <button class="btn-fetch" (click)="onJuntas()">Actualizar</button>
         <div *ngIf="showMessage" class="message">
           {{ messageText }}
         </div>
         <hr>
         <div class="action-btn-container">
-          <button class="btn-fetch">Fetch Product</button>
-          <button class="btn-clear">Clear Product</button>
+          <button class="btn-fetch" (click)="onJuntas()">Fetch Product</button>
+          <button class="btn-clear" (click)="onDeleteAllJuntas()">Eliminar Juntas</button>
         </div>
 
       </div>
