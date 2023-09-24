@@ -34,6 +34,7 @@
             <th></th>
           </tr>
           <tr *ngFor= "let junta of allJuntas; index as i">
+            <div *ngIf="isLoading">Cargando juntas...</div>
             <td>{{i + 1}}</td>
             <td>{{ junta.tipo_extremos}}</td>
             <td>{{ junta.tipo_material}}</td>
