@@ -5,10 +5,22 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { IonicModule } from '@ionic/angular';
+import { InspectoresComponent } from './modulos/administracion/inspectores/inspectores.component';
+import { JuntasComponent } from './modulos/administracion/juntas/juntas.component';
+import { SoldadoresComponent } from './modulos/administracion/soldadores/soldadores.component';
+
+
+
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    InspectoresComponent,
+    JuntasComponent,
+    SoldadoresComponent
+
+
   ],
   imports: [
     BrowserModule,
