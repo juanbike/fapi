@@ -43,7 +43,9 @@ export class AppComponent implements OnInit{
 
 
 
-  onJuntaCreate(juntas:{ tipo_extremos: string, tipo_material: string, material: string}): void{
+  onJuntaCreate(juntas:{ nominal: string, nominal1: string, lineaOSistema: string, especificacion: string, schedule: string,
+    tipo_extremos: string, tipo_material: string, material: string, diam_inch_contabilizadas: string,
+    factor_pulgadas_diametrales: string, pulgadas_diametrales: string, proyectID: string, usuarioID: string}): void{
     this.juntasService.onJuntaCreate(juntas).subscribe(
       (response: Junta) => {
         this.allJuntas.push(response);
@@ -124,9 +126,20 @@ export class AppComponent implements OnInit{
 
     //Llenamos el formulario con los datos de la junta seleccionada
     this.form.setValue({
+      nominal: junta.nominal,
+      nominal1: junta.nominal1,
+      lineaOSistema: junta.lineaOSistema,
+      especificacion: junta.especificacion,
+      schedule: junta.schedule,
       tipo_extremos: junta.tipo_extremos,
       tipo_material: junta.tipo_material,
-      material: junta.material
+      material: junta.material,
+      diam_inch_contabilizadas: junta.diam_inch_contabilizadas,
+      factor_pulgadas_diametrales: junta.factor_pulgadas_diametrales,
+      pulgadas_diametrales: junta.pulgadas_diametrales,
+      proyectID: junta.proyectID,
+      usuarioID: junta.usuarioID
+
     })
 
     //Cambiamos el modo de edicion
