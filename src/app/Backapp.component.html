@@ -1,0 +1,118 @@
+<div class="main-area">
+  <div class="content-area">
+    <div class="header">
+      <h1>Administrador de  Juntas</h1>
+      <hr>
+    </div>
+    <div class="container">
+      <!--Add product form-->
+      <div class="form-area">
+        <h3>Crear Junta</h3>
+        <form #juntasForm="ngForm" (ngSubmit)="onJuntaCreate(juntasForm.value)">
+
+          <label>Nominal</label>
+          <input type="text" name="nominal" ngModel>
+
+          <label>Nominal1</label>
+          <input type="text" name="nominal1" ngModel>
+
+          <label>Linea o Sistema</label>
+          <input type="text" name="lineaOSistema" ngModel>
+
+          <label>Especicación</label>
+          <input type="text" name="especificacion" ngModel>
+
+          <label>Schedule</label>
+          <input type="text" name="schedule" ngModel>
+
+          <label>Tipo Extremo</label>
+          <input type="text" name="tipo_extremos" ngModel>
+
+          <label>Tipo Material</label>
+          <input type="text" name="tipo_material" ngModel>
+
+          <label>Material</label>
+          <input type="text" name="material" ngModel>
+
+          <label>Pulgadas contabilizadas</label>
+          <input type="text" name="diam_inch_contabilizadas" ngModel>
+
+          <label>Factor Pulgadas Diametrales</label>
+          <input type="text" name="factor_pulgadas_diametrales" ngModel>
+
+          <label>Pulgadas Diametrales</label>
+          <input type="text" name="pulgadas_diametrales" ngModel>
+
+          <label>ProyectoID</label>
+          <input type="text" name="proyectID" ngModel>
+
+          <label>UsuarioID</label>
+          <input type="text" name="usuarioID" ngModel>
+
+
+
+
+
+          <input type="submit" value="{{editMode ? 'Actualizar Junta' : 'Crear Junta'}}">
+        </form>
+      </div>
+
+      <!--Display product area-->
+      <div class="product-display-area">
+        <h3>Todas las Juntas</h3>
+        <table id="products">
+          <tr>
+            <th>#</th>
+            <th>Nominal</th>
+            <th>Nominal1</th>
+            <th>Linea o Sistema</th>
+            <th>Especicación</th>
+            <th>Schedule</th>
+            <th>Tipo Extremo</th>
+            <th>Tipo Material</th>
+            <th>Material</th>
+            <th>Pulgadas contabilizadas</th>
+            <th>Factor Pulgadas Diametrales</th>
+            <th>Pulgadas Diametrales</th>
+            <th>ProyectoID</th>
+            <th>UsuarioID</th>
+
+            <th></th>
+          </tr>
+          <tr *ngFor= "let junta of allJuntas; index as i">
+            <div *ngIf="isLoading">Cargando juntas...</div>
+            <td>{{i + 1}}</td>
+            <td>{{ junta.nominal}}</td>
+            <td>{{ junta.nominal1}}</td>
+            <td>{{ junta.lineaOSistema}}</td>
+            <td>{{ junta.especificacion}}</td>
+            <td>{{ junta.schedule}}</td>
+            <td>{{ junta.tipo_extremos}}</td>
+            <td>{{ junta.tipo_material}}</td>
+            <td>{{ junta.material}}</td>
+            <td>{{ junta.diam_inch_contabilizadas}}</td>
+            <td>{{ junta.factor_pulgadas_diametrales}}</td>
+            <td>{{ junta.pulgadas_diametrales}}</td>
+            <td>{{ junta.proyectID}}</td>
+            <td>{{ junta.usuarioID}}</td>
+
+         <td><button class="btn-delete" (click)="onDeleteJunta(junta.id)">Delete</button></td>
+         <td><button class="btn-edit" (click)="onEditClicked(junta.id)">Edit</button></td>
+          </tr>
+        </table>
+        <button class="btn-fetch" (click)="onJuntas()">Actualizar</button>
+        <div *ngIf="showMessage" class="message">
+          {{ messageText }}
+        </div>
+        <hr>
+        <div class="action-btn-container">
+          <button class="btn-fetch" (click)="onJuntas()">Fetch Product</button>
+          <button class="btn-clear" (click)="onDeleteAllJuntas()">Eliminar Juntas</button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>

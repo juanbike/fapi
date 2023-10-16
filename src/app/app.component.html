@@ -1,118 +1,121 @@
-<div class="main-area">
-  <div class="content-area">
-    <div class="header">
-      <h1>Administrador de  Juntas</h1>
-      <hr>
-    </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    <title>Formulario</title>
+</head>
+<body>
     <div class="container">
-      <!--Add product form-->
-      <div class="form-area">
-        <h3>Crear Junta</h3>
-        <form #juntasForm="ngForm" (ngSubmit)="onJuntaCreate(juntasForm.value)">
+        <h1>Formulario</h1>
+        <form>
+            <div class="row">
 
-          <label>Nominal</label>
-          <input type="text" name="nominal" ngModel>
+                <div class="col-md-1">
+                    <div class="mb-3">
+                        <label for="nominal" class="form-label">Nominal</label>
+                        <input type="text" class="form-control form-control-sm" id="nominal" maxlength="3">
+                    </div>
+                </div>
 
-          <label>Nominal1</label>
-          <input type="text" name="nominal1" ngModel>
+                <div class="col-md-1">
+                    <div class="mb-3">
+                        <label for="nominal1" class="form-label">Nominal1:</label>
+                        <input type="text" class="form-control form-control-sm" id="nominal1" maxlength="3">
+                    </div>
+                </div>
 
-          <label>Linea o Sistema</label>
-          <input type="text" name="lineaOSistema" ngModel>
+                <div class="col-md-5">
+                  <div class="mb-3">
+                    <label for="linea" class="form-label">Línea</label>
+                    <input type="text" class="form-control" id="linea" maxlength="70">
+                  </div>
+                </div>
 
-          <label>Especicación</label>
-          <input type="text" name="especificacion" ngModel>
+                <div class="col-md-1">
+                  <div class="mb-3">
+                      <label for="especificacion" class="form-label">Especificación</label>
+                      <input type="text" class="form-control" id="especificacion" maxlength="5">
+                  </div>
+              </div>
 
-          <label>Schedule</label>
-          <input type="text" name="schedule" ngModel>
-
-          <label>Tipo Extremo</label>
-          <input type="text" name="tipo_extremos" ngModel>
-
-          <label>Tipo Material</label>
-          <input type="text" name="tipo_material" ngModel>
-
-          <label>Material Precio</label>
-          <input type="text" name="material" ngModel>
-
-          <label>Pulgadas contabilizadas</label>
-          <input type="text" name="diam_inch_contabilizadas" ngModel>
-
-          <label>Factor Pulgadas Diametrales</label>
-          <input type="text" name="factor_pulgadas_diametrales" ngModel>
-
-          <label>Pulgadas Diametrales</label>
-          <input type="text" name="pulgadas_diametrales" ngModel>
-
-          <label>ProyectoID</label>
-          <input type="text" name="proyectID" ngModel>
-
-          <label>UsuarioID</label>
-          <input type="text" name="usuarioID" ngModel>
+              <div class="col-md-1">
+                <div class="mb-3">
+                    <label for="schedule" class="form-label">Schedule</label>
+                    <input type="text" class="form-control" id="schedule" maxlength="5">
+                </div>
+            </div>
 
 
 
 
+            </div> <!-------class row  --   ------>
 
-          <input type="submit" value="{{editMode ? 'Actualizar Junta' : 'Crear Junta'}}">
+
+
+
+
+
+            <div class="row">
+
+              <div class="col-md-2">
+                <div class="mb-3">
+                    <label for="tipo_extremos" class="form-label">Tipo Extremos</label>
+                    <input type="text" class="form-control" id="tipo_extremos" maxlength="12">
+                </div>
+            </div>
+
+            <div class="col-md-2">
+              <div class="mb-3">
+                  <label for="tipo_material" class="form-label">Tipo de Material</label>
+                  <input type="text" class="form-control" id="tipo_material" maxlength="15">
+              </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="mb-3">
+                <label for="material" class="form-label">Material</label>
+                <input type="text" class="form-control" id="material" maxlength="30">
+            </div>
+        </div>
+
+        <div class="col-md-2">
+          <div class="mb-3">
+              <label for="diam_inch_contabilizadas" class="form-label">Pulgadas</label>
+              <input type="text" class="form-control" id="diam_inch_contabilizadas" maxlength="7">
+          </div>
+      </div>
+
+
+
+            </div><!-------class row  --   ------>
+
+
+            <div class="row">
+
+                <div class="col-md-1">
+                    <div class="mb-3">
+                        <label for="factor_pulgadas_diametrales" class="form-label">F.P.D.</label>
+                        <input type="text" class="form-control" id="factor_pulgadas_diametrales" maxlength="5">
+                    </div>
+                </div>
+                <div class="col-md-1">
+                <div class="mb-3">
+                  <label for="pulgadas_diametrales" class="form-label">P.D.</label>
+                  <input type="text" class="form-control" id="pulgadas_diametrales" maxlength="5">
+              </div>
+              </div>
+
+
+            </div>
+
+
+            <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
-      </div>
-
-      <!--Display product area-->
-      <div class="product-display-area">
-        <h3>All Products</h3>
-        <table id="products">
-          <tr>
-            <th>#</th>
-            <th>Nominal</th>
-            <th>Nominal1</th>
-            <th>Linea o Sistema</th>
-            <th>Especicación</th>
-            <th>Schedule</th>
-            <th>Tipo Extremo</th>
-            <th>Tipo Material</th>
-            <th>Material Precio</th>
-            <th>Pulgadas contabilizadas</th>
-            <th>Factor Pulgadas Diametrales</th>
-            <th>Pulgadas Diametrales</th>
-            <th>ProyectoID</th>
-            <th>UsuarioID</th>
-
-            <th></th>
-          </tr>
-          <tr *ngFor= "let junta of allJuntas; index as i">
-            <div *ngIf="isLoading">Cargando juntas...</div>
-            <td>{{i + 1}}</td>
-            <td>{{ junta.nominal}}</td>
-            <td>{{ junta.nominal1}}</td>
-            <td>{{ junta.lineaOSistema}}</td>
-            <td>{{ junta.especificacion}}</td>
-            <td>{{ junta.schedule}}</td>
-            <td>{{ junta.schedule}}</td>
-            <td>{{ junta.tipo_extremos}}</td>
-            <td>{{ junta.tipo_material}}</td>
-            <td>{{ junta.material}}</td>
-            <td>{{ junta.diam_inch_contabilizadas}}</td>
-            <td>{{ junta.factor_pulgadas_diametrales}}</td>
-            <td>{{ junta.proyectID}}</td>
-            <td>{{ junta.usuarioID}}</td>
-
-         <td><button class="btn-delete" (click)="onDeleteJunta(junta.id)">Delete</button></td>
-         <td><button class="btn-edit" (click)="onEditClicked(junta.id)">Edit</button></td>
-          </tr>
-        </table>
-        <button class="btn-fetch" (click)="onJuntas()">Actualizar</button>
-        <div *ngIf="showMessage" class="message">
-          {{ messageText }}
-        </div>
-        <hr>
-        <div class="action-btn-container">
-          <button class="btn-fetch" (click)="onJuntas()">Fetch Product</button>
-          <button class="btn-clear" (click)="onDeleteAllJuntas()">Eliminar Juntas</button>
-        </div>
-
-      </div>
-
     </div>
 
-  </div>
-</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
