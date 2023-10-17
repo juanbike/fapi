@@ -8,6 +8,9 @@ import { IonicModule } from '@ionic/angular';
 import { InspectoresComponent } from './modulos/administracion/inspectores/inspectores.component';
 import { JuntasComponent } from './modulos/administracion/juntas/juntas.component';
 import { SoldadoresComponent } from './modulos/administracion/soldadores/soldadores.component';
+import { AgregarModalComponent } from './componentsModal/agregar-modal/agregar-modal.component';
+import { EditarModalComponent } from './componentsModal/editar-modal/editar-modal.component';
+import { EliminarModalComponent } from './componentsModal/eliminar-modal/eliminar-modal.component';
 
 
 
@@ -18,7 +21,10 @@ import { SoldadoresComponent } from './modulos/administracion/soldadores/soldado
     AppComponent,
     InspectoresComponent,
     JuntasComponent,
-    SoldadoresComponent
+    SoldadoresComponent,
+    AgregarModalComponent,
+    EditarModalComponent,
+    EliminarModalComponent
 
 
   ],
