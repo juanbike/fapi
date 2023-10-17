@@ -141,5 +141,8 @@
       }
     }
   },
-  "defaultProject": "AngularHttpRequest"
+  "defaultProject": "AngularHttpRequest",
+  "cli": {
+    "analytics": "d31a3e41-8490-44ad-92c8-90c534a288f7"
+  }
 }
