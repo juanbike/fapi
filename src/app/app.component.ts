@@ -10,9 +10,17 @@ import { JuntasService } from './juntas.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  template: `
+
+`,
 })
 export class AppComponent implements OnInit{
+
+
+  mostrar = false;
+
+
 
 
   constructor(private http: HttpClient, private juntasService: JuntasService) {}
@@ -24,6 +32,7 @@ export class AppComponent implements OnInit{
   showMessage: boolean = false; //Funcion Para mostrar mensajes al usuario
   messageText: string = ''; //Mensaje a mostrar
   isLoading: boolean = false; //Controlar carga de datos
+  ismostrarModal: boolean = false; //muestra la ventana modal
 
   //Accedemos a las propiedades del formulario
   @ViewChild( 'juntasForm' ) form: NgForm;
@@ -57,6 +66,9 @@ export class AppComponent implements OnInit{
         this.showMessageWithTimeout('Error al crear la junta', 3000);
       }
     );
+
+
+
 
   }
 
@@ -100,6 +112,7 @@ export class AppComponent implements OnInit{
 
 
 
+
   onDeleteAllJuntas():void{
     this.http.delete<void>(`${this.apiurl}`).subscribe(
       () =>{
@@ -136,9 +149,9 @@ export class AppComponent implements OnInit{
       material: junta.material,
       diam_inch_contabilizadas: junta.diam_inch_contabilizadas,
       factor_pulgadas_diametrales: junta.factor_pulgadas_diametrales,
-      pulgadas_diametrales: junta.pulgadas_diametrales,
-      proyectID: junta.proyectID,
-      usuarioID: junta.usuarioID
+      pulgadas_diametrales: junta.pulgadas_diametrales
+      //proyectID: junta.proyectID,
+     // usuarioID: junta.usuarioID
 
     })
 
@@ -160,11 +173,27 @@ export class AppComponent implements OnInit{
   }
 
 
-  
 
 
 
+
+
+  ocultarModal() {
+    this.ismostrarModal = false;
   }
+
+
+  mostrarModal() {
+    this.mostrar = true;
+    //alert('hola');
+  }
+
+  cerrarModal() {
+    this.mostrar = false;
+    alert('cerrar');
+  }
+
+}
 
 
 

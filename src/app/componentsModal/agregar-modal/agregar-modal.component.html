@@ -1,1 +1,165 @@
-<p>agregar-modal works!</p>
+<div class="modal">
+  <div class="modal-content">
+    <ng-container *ngTemplateOutlet="modalContent"></ng-container>
+  </div>
+</div>
+
+<ng-template #modalContent>
+  <div class="container">
+    <h1>Crear juntas</h1>
+    <form #juntasForm="ngForm" (ngSubmit)="onJuntaCreate(juntasForm.value)">
+      <div class="row">
+        <div class="col-md-1">
+          <div class="mb-3">
+            <label for="nominal" class="form-label">Nominal</label>
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              id="nominal"
+              maxlength="3"
+            />
+          </div>
+        </div>
+
+        <div class="col-md-1">
+          <div class="mb-3">
+            <label for="nominal1" class="form-label">Nominal1:</label>
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              id="nominal1"
+              maxlength="3"
+            />
+          </div>
+        </div>
+
+        <div class="col-md-5">
+          <div class="mb-3">
+            <label for="linea" class="form-label">Línea</label>
+            <input
+              type="text"
+              class="form-control"
+              id="linea"
+              maxlength="70"
+            />
+          </div>
+        </div>
+
+        <div class="col-md-1">
+          <div class="mb-3">
+            <label for="especificacion" class="form-label">Esción</label>
+            <input
+              type="text"
+              class="form-control"
+              id="especificacion"
+              maxlength="5"
+            />
+          </div>
+        </div>
+
+        <div class="col-md-1">
+          <div class="mb-3">
+            <label for="schedule" class="form-label">Schedule</label>
+            <input
+              type="text"
+              class="form-control"
+              id="schedule"
+              maxlength="5"
+            />
+          </div>
+        </div>
+      </div>
+      <!-------class row  --   ------>
+
+      <div class="row">
+        <div class="col-md-2">
+          <div class="mb-3">
+            <label for="tipo_extremos" class="form-label"
+              >Tipo Extremos</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="tipo_extremos"
+              maxlength="12"
+            />
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <div class="mb-3">
+            <label for="tipo_material" class="form-label"
+              >Tipo de Material</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="tipo_material"
+              maxlength="15"
+            />
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="mb-3">
+            <label for="material" class="form-label">Material</label>
+            <input
+              type="text"
+              class="form-control"
+              id="material"
+              maxlength="30"
+            />
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <div class="mb-3">
+            <label for="diam_inch_contabilizadas" class="form-label"
+              >Pulgadas</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="diam_inch_contabilizadas"
+              maxlength="7"
+            />
+          </div>
+        </div>
+      </div>
+      <!-------class row  --   ------>
+
+      <div class="row">
+        <div class="col-md-1">
+          <div class="mb-3">
+            <label for="factor_pulgadas_diametrales" class="form-label"
+              >F.P.D.</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="factor_pulgadas_diametrales"
+              maxlength="5"
+            />
+          </div>
+        </div>
+        <div class="col-md-1">
+          <div class="mb-3">
+            <label for="pulgadas_diametrales" class="form-label">P.D.</label>
+            <input
+              type="text"
+              class="form-control"
+              id="pulgadas_diametrales"
+              maxlength="5"
+            />
+          </div>
+        </div>
+      </div>
+
+      <input type="submit" value="Crear Junta" class="btn btn-primary" />
+      <button type="button" class="btn btn-secondary" (click)="cerrarModal()">Cerrar ventana</button>
+    </form>
+  </div>
+  
+</ng-template>
+
+

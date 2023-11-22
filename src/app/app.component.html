@@ -1,5 +1,11 @@
 <div class="container">
   <h3>Todas las Juntas</h3>
+
+  
+
+
+  <app-agregar-modal *ngIf="mostrar"></app-agregar-modal>
+
   <table id="products" class="table table-sm"  class="table table-striped-columns">
     <tr>
       <th>#</th>
@@ -44,6 +50,9 @@
   </div>
   <hr>
   <div class="action-btn-container">
+
+    <button type="button"  class="btn btn-primary" (click)="mostrarModal()">Mostrar Modal</button>
+
     <button type="button"  class="btn btn-primary" (click)="onJuntas()">Recuperar juntas</button>
     <button type="button" class="btn btn-danger" (click)="onDeleteAllJuntas()">Eliminar Juntas</button>
   </div>
